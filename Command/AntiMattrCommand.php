@@ -53,7 +53,7 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
         );
         $dm = $application->getKernel()->getContainer()->get($alias);
         $helperSet = $application->getHelperSet();
-        $helperSet->set(new DocumentManagerHelper($em), 'dm');
+        $helperSet->set(new DocumentManagerHelper($dm), 'dm');
     }
 
     /**

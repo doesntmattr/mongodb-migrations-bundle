@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Doctrine\Bundle\DoctrineBundle\Command\Proxy\DoctrineCommandHelper;
-use Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand;
+use AntiMattr\MongoDB\Migrations\Tools\Console\Command\GenerateCommand;
 
 /**
  * @author Matthew Fitzgerald <matthewfitz@gmail.com>

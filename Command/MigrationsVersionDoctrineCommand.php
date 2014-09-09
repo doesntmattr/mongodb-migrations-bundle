@@ -27,6 +27,7 @@ class MigrationsVersionDoctrineCommand extends VersionCommand
         parent::configure();
 
         $this
+            ->setName('mongodb:migrations:version')        
             ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.')
         ;
     }

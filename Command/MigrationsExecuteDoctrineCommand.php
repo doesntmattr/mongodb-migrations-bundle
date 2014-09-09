@@ -27,6 +27,7 @@ class MigrationsExecuteDoctrineCommand extends ExecuteCommand
         parent::configure();
 
         $this
+            ->setName('mongodb:migrations:execute')
             ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.')
         ;
     }

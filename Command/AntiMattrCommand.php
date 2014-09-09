@@ -13,6 +13,7 @@ namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
 use AntiMattr\MongoDB\Migrations\Configuration\Configuration;
 use AntiMattr\MongoDB\Migrations\Configuration\AbstractFileConfiguration;
+use Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -37,6 +38,22 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
         $configuration->setMigrationsCollectionName($container->getParameter('mongo_db_migrations.collection_name'));
         
         self::injectContainerToMigrations($container, $configuration->getMigrations());
+    }
+
+    /**
+     * @param Symfony\Bundle\FrameworkBundle\Console\Application
+     * @param string $dmName
+     */
+    public static function setApplicationDocumentManager(Application $application, $dmName)
+    {
+        /** @var $dm \Doctrine\ODM\DocumentManager */
+        $alias = sprintf(
+            "doctrine_mongodb.odm.%s",
+            $dmName
+        );
+        $dm = $application->getKernel()->getContainer()->get($alias);
+        $helperSet = $application->getHelperSet();
+        $helperSet->set(new DocumentManagerHelper($em), 'dm');
     }
 
     /**

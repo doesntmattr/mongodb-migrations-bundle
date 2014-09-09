@@ -11,11 +11,10 @@
 
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Doctrine\Bundle\DoctrineBundle\Command\Proxy\DoctrineCommandHelper;
 use AntiMattr\MongoDB\Migrations\Tools\Console\Command\GenerateCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @author Matthew Fitzgerald <matthewfitz@gmail.com>
@@ -28,13 +27,13 @@ class MigrationsGenerateDoctrineCommand extends GenerateCommand
 
         $this
             ->setName('mongodb:migrations:generate')        
-            ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.')
+            ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.', 'default_document_manager')
         ;
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        DoctrineCommandHelper::setApplicationEntityManager($this->getApplication(), $input->getOption('dm'));
+        AntiMattrCommand::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
 
         $configuration = $this->getMigrationConfiguration($input, $output);
         AntiMattrCommand::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);

@@ -16,5 +16,6 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "AntiMattr\\Bundle\\MongoDBMigrationsBundle\\": "" }
-    }
+    },
+    "target-dir" : "AntiMattr/Bundle/MongoDBMigrationsBundle"
 }

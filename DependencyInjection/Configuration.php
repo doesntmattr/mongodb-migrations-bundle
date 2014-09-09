@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the AntiMattr MongoDB Migrations Library, a library by Matthew Fitzgerald.
+ * This file is part of the AntiMattr MongoDB Migrations Bundle, a library by Matthew Fitzgerald.
  *
  * (c) 2014 Matthew Fitzgerald
  *

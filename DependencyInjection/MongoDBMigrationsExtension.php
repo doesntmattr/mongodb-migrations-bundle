@@ -39,16 +39,16 @@ class MongoDBMigrationsExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function getNamespace()
+    public function getAlias()
     {
-        return __NAMESPACE__;
+        return 'mongo_db_migrations';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getPath()
+    public function getNamespace()
     {
-        return strtr(__DIR__, '\\', '/');
+        return __NAMESPACE__;
     }
 }

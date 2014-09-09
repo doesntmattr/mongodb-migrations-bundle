@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('mongodb_migrations', 'array');
+        $rootNode = $treeBuilder->root('mongo_db_migrations', 'array');
 
         $rootNode
             ->children()

@@ -1,5 +1,3 @@
-# DO NOT USE - In Development
-
 MongoDBMigrationsBundle
 ========================
 
@@ -52,4 +50,39 @@ mongo_db_migrations:
     script_dir_name: "%kernel.root_dir%/scripts"
     name: "OpenSky DEVO MongoDB Migrations"
     namespace: "OpenSky\Bundle\MainBundle\Migrations\MongoDB"
+```
+
+Container Aware Migrations
+==========================
+
+In some cases you might need access to the container to ensure the proper update of your data structure. This could be necessary to update relations with some specific logic or to create new entities.
+
+Therefore you can just implement the ContainerAwareInterface with its needed methods to get full access to the container.
+
+```php
+// ...
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+class Version20130326212938 extends AbstractMigration implements ContainerAwareInterface
+{
+
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
+    public function up(Database $db)
+    {
+        // ... migration content
+    }
+
+    public function postUp(Database $db)
+    {
+        $em = $this->container->get('doctrine.odm.default_document_manager');
+        // ... update the entities
+    }
+}
 ```

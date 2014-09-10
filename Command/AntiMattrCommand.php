@@ -31,11 +31,12 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
             mkdir($dir, 0777, true);
         }
 
-        $configuration->setMigrationsNamespace($container->getParameter('mongo_db_migrations.namespace'));
-        $configuration->setMigrationsDirectory($dir);
-        $configuration->registerMigrationsFromDirectory($dir);
-        $configuration->setName($container->getParameter('mongo_db_migrations.name'));
         $configuration->setMigrationsCollectionName($container->getParameter('mongo_db_migrations.collection_name'));
+        $configuration->setMigrationsDatabaseName($container->getParameter('mongo_db_migrations.database_name'));
+        $configuration->setMigrationsDirectory($dir);
+        $configuration->setMigrationsNamespace($container->getParameter('mongo_db_migrations.namespace'));
+        $configuration->setName($container->getParameter('mongo_db_migrations.name'));
+        $configuration->registerMigrationsFromDirectory($dir);
         
         self::injectContainerToMigrations($container, $configuration->getMigrations());
     }

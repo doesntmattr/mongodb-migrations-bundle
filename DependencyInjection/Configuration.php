@@ -31,10 +31,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('dir_name')->defaultValue('%kernel.root_dir%/MongoDBMigrations')->cannotBeEmpty()->end()
-                ->scalarNode('namespace')->defaultValue('Application\MongoDBMigrations')->cannotBeEmpty()->end()
                 ->scalarNode('collection_name')->defaultValue('migration_versions')->cannotBeEmpty()->end()
+                ->scalarNode('database_name')->cannotBeEmpty()->end()
+                ->scalarNode('dir_name')->defaultValue('%kernel.root_dir%/MongoDBMigrations')->cannotBeEmpty()->end()
                 ->scalarNode('name')->defaultValue('Application MongoDB Migrations')->end()
+                ->scalarNode('namespace')->defaultValue('Application\MongoDBMigrations')->cannotBeEmpty()->end()
+                ->scalarNode('script_dir_name')->end()
             ->end()
         ;
 

@@ -43,12 +43,4 @@ class MongoDBMigrationsExtension extends Extension
     {
         return 'mongo_db_migrations';
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getNamespace()
-    {
-        return __NAMESPACE__;
-    }
 }

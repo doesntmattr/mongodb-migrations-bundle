@@ -44,3 +44,12 @@ public function registerBundles()
 Configuration
 =============
 
+```yaml
+mongo_db_migrations:
+    collection_name: "migration_versions"
+    database_name: "opensky_devo"
+    dir_name: "%kernel.root_dir%/../src/OpenSky/Bundle/MainBundle/Migrations/MongoDB"
+    script_dir_name: "%kernel.root_dir%/scripts"
+    name: "OpenSky DEVO MongoDB Migrations"
+    namespace: "OpenSky\Bundle\MainBundle\Migrations\MongoDB"
+```

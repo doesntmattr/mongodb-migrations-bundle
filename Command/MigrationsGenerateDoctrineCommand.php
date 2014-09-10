@@ -26,7 +26,7 @@ class MigrationsGenerateDoctrineCommand extends GenerateCommand
         parent::configure();
 
         $this
-            ->setName('mongodb:migrations:generate')        
+            ->setName('mongodb:migrations:generate')
             ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.', 'default_document_manager')
         ;
     }

@@ -12,7 +12,6 @@
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
 use AntiMattr\MongoDB\Migrations\Configuration\Configuration;
-use AntiMattr\MongoDB\Migrations\Configuration\AbstractFileConfiguration;
 use Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -37,7 +36,7 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
         $configuration->setMigrationsNamespace($container->getParameter('mongo_db_migrations.namespace'));
         $configuration->setName($container->getParameter('mongo_db_migrations.name'));
         $configuration->registerMigrationsFromDirectory($dir);
-        
+
         self::injectContainerToMigrations($container, $configuration->getMigrations());
     }
 

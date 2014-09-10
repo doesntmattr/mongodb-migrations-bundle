@@ -26,7 +26,7 @@ class MigrationsStatusDoctrineCommand extends StatusCommand
         parent::configure();
 
         $this
-            ->setName('mongodb:migrations:status')        
+            ->setName('mongodb:migrations:status')
             ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.', 'default_document_manager')
         ;
     }

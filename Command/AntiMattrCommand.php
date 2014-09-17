@@ -36,7 +36,7 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
         $configuration->setMigrationsNamespace($container->getParameter('mongo_db_migrations.namespace'));
         $configuration->setName($container->getParameter('mongo_db_migrations.name'));
         $configuration->registerMigrationsFromDirectory($dir);
- 	$configuration->setMigrationsScriptDirectory($container->getParameter('mongo_db_migrations.script_dir_name'));
+        $configuration->setMigrationsScriptDirectory($container->getParameter('mongo_db_migrations.script_dir_name'));
 
         self::injectContainerToMigrations($container, $configuration->getMigrations());
     }

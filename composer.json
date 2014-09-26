@@ -2,7 +2,7 @@
     "name": "antimattr/mongodb-migrations-bundle",
     "type": "symfony-bundle",
     "description": "Symfony MongoDBMigrationsBundle",
-    "keywords": ["database", "migration", "doctrine", "mongodb", "symfony"],
+    "keywords": ["antimattr", "database", "doctrine", "migration", "mongodb", "symfony"],
     "homepage": "http://github.com/antimattr/mongodb-migrations-bundle",
     "license": "MIT",
     "authors": [
@@ -17,6 +17,11 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "AntiMattr\\Bundle\\MongoDBMigrationsBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     },
     "target-dir" : "AntiMattr/Bundle/MongoDBMigrationsBundle"
 }

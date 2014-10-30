@@ -66,7 +66,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Version20130326212938 extends AbstractMigration implements ContainerAwareInterface
 {
-
     private $container;
 
     public function setContainer(ContainerInterface $container = null)
@@ -83,6 +82,30 @@ class Version20130326212938 extends AbstractMigration implements ContainerAwareI
     {
         $dm = $this->container->get('doctrine.odm.default_document_manager');
         // ... update the entities
+    }
+}
+```
+
+MongoDB Cursor Timeouts
+=======================
+
+In some cases you may need the Cursor timeout to be extended. You can of course do this on a per migration basis, or you can do this for all migrations by extending the base migration and adding to the constructor.
+
+```php
+// ...
+use AntiMattr\MongoDB\Migrations\AbstractMigration as BaseMigration;
+use AntiMattr\MongoDB\Migrations\Version;
+use MongoCursor;
+
+abstract class AbstractMigration extends BaseMigration
+{
+    /**
+     * @var AntiMattr\MongoDB\Migrations\Version
+     */
+    public function __construct(Version $version)
+    {
+        parent::__construct($version);
+        MongoCursor::$timeout = -1;
     }
 }
 ```

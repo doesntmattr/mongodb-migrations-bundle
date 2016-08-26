@@ -1,3 +1,5 @@
+:warning: Forked from [antimattr/mongodb-migrations-bundle](https://github.com/antimattr/mongodb-migrations-bundle) for contributors as the original project isn't being maintained. See [issue 16](https://github.com/antimattr/mongodb-migrations/issues/16)
+
 MongoDBMigrationsBundle
 ========================
 

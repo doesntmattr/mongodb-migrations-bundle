@@ -1,9 +1,9 @@
 {
-    "name": "antimattr/mongodb-migrations-bundle",
+    "name": "doesntmattr/mongodb-migrations-bundle",
     "type": "symfony-bundle",
     "description": "Symfony MongoDBMigrationsBundle",
     "keywords": ["antimattr", "database", "doctrine", "migration", "mongodb", "symfony"],
-    "homepage": "http://github.com/antimattr/mongodb-migrations-bundle",
+    "homepage": "http://github.com/doesntmattr/mongodb-migrations-bundle",
     "license": "MIT",
     "authors": [
         {"name": "Matthew Fitzgerald", "email": "matthewfitz@gmail.com"}

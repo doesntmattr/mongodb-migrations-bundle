@@ -47,9 +47,9 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
      */
     public static function setApplicationDocumentManager(Application $application, $dmName)
     {
-        /** @var $dm \Doctrine\ODM\DocumentManager */
+        /* @var $dm \Doctrine\ODM\DocumentManager */
         $alias = sprintf(
-            "doctrine_mongodb.odm.%s",
+            'doctrine_mongodb.odm.%s',
             $dmName
         );
         $dm = $application->getKernel()->getContainer()->get($alias);
@@ -58,7 +58,7 @@ abstract class AntiMattrCommand extends ContainerAwareCommand
     }
 
     /**
-     * Injects the container to migrations aware of it
+     * Injects the container to migrations aware of it.
      */
     private static function injectContainerToMigrations(ContainerInterface $container, array $versions)
     {

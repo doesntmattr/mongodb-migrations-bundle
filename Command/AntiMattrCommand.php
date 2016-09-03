@@ -14,20 +14,15 @@ namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 use AntiMattr\MongoDB\Migrations\Configuration\Configuration;
 use Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 /**
  * @author Matthew Fitzgerald <matthewfitz@gmail.com>
  */
-final class CommandHelper
+abstract class AntiMattrCommand extends ContainerAwareCommand
 {
-    /**
-     * configureMigrations
-     *
-     * @param ContainerInterface $container
-     * @param Configuration      $configuration
-     */
     public static function configureMigrations(ContainerInterface $container, Configuration $configuration)
     {
         $dir = $container->getParameter('mongo_db_migrations.dir_name');
@@ -47,8 +42,8 @@ final class CommandHelper
     }
 
     /**
-     * @param Application $application
-     * @param string      $dmName
+     * @param Symfony\Bundle\FrameworkBundle\Console\Application
+     * @param string $dmName
      */
     public static function setApplicationDocumentManager(Application $application, $dmName)
     {
@@ -63,12 +58,7 @@ final class CommandHelper
     }
 
     /**
-     * injectContainerToMigrations
-     *
      * Injects the container to migrations aware of it.
-     *
-     * @param ContainerInterface $container
-     * @param array $versions
      */
     private static function injectContainerToMigrations(ContainerInterface $container, array $versions)
     {

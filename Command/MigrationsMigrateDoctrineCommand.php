@@ -33,10 +33,10 @@ class MigrationsMigrateDoctrineCommand extends MigrateCommand
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        CommandHelper::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
+        AntiMattrCommand::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
 
         $configuration = $this->getMigrationConfiguration($input, $output);
-        CommandHelper::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
+        AntiMattrCommand::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
 
         parent::execute($input, $output);
     }

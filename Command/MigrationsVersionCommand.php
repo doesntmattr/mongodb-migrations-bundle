@@ -33,10 +33,10 @@ class MigrationsVersionCommand extends VersionCommand
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        AntiMattrCommand::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
+        CommandHelper::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
 
         $configuration = $this->getMigrationConfiguration($input, $output);
-        AntiMattrCommand::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
+        CommandHelper::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
 
         parent::execute($input, $output);
     }

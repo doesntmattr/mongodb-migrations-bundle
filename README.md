@@ -6,7 +6,7 @@ really useful AND stable.  Thank you @rcatlin and @matthewfitz !
 MongoDBMigrationsBundle
 ========================
 
-This bundle integrates the [AntiMattr MongoDB Migrations library](https://github.com/antimattr/mongodb-migrations).
+This bundle integrates the [AntiMattr MongoDB Migrations library](https://github.com/doesntmattr/mongodb-migrations).
 into Symfony so that you can safely and quickly manage MongoDB migrations.
 
 Installation
@@ -17,8 +17,8 @@ Add the following to your composer.json file:
 ```json
 {
     "require": {
-        "antimattr/mongodb-migrations": "~1.0@stable",
-        "antimattr/mongodb-migrations-bundle": "~1.0@stable"
+        "doesntmattr/mongodb-migrations": "~1.0@stable",
+        "doesntmattr/mongodb-migrations-bundle": "~1.0@stable"
     }
 }
 ```
@@ -29,7 +29,7 @@ Install the libraries by running:
 composer install
 ```
 
-If everything worked, the MonogDBMigrationsBundle can now be found at vendor/antimattr/mongodb-migrations-bundle.
+If everything worked, the MonogDBMigrationsBundle can now be found at vendor/doesntmattr/mongodb-migrations-bundle.
 
 Finally, be sure to enable the bundle in AppKernel.php by including the following:
 
@@ -120,7 +120,7 @@ Features
 
 For a full list of available features, see the README.md in the underlying library
 
-https://github.com/antimattr/mongodb-migrations/blob/master/README.md
+https://github.com/doesntmattr/mongodb-migrations/blob/master/README.md
 
 Differences from the underlying library are limited to the Console commands, namely database configurations are handled by Symfony's Dependency injection container, so you don't pass them as command line args.
 

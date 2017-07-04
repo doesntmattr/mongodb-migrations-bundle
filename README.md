@@ -47,6 +47,8 @@ public function registerBundles()
 Configuration
 =============
 
+Add following configuration lines to config.yml file.
+
 ```yaml
 mongo_db_migrations:
     collection_name: "migration_versions"

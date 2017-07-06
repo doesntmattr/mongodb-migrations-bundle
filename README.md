@@ -50,6 +50,7 @@ Configuration
 Add following configuration lines to config.yml file.
 
 ```yaml
+# app/config/config.yml
 mongo_db_migrations:
     collection_name: "migration_versions"
     database_name: "opensky_devo"

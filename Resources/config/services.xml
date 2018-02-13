@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsExecuteCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsExecuteCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsExecuteDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsExecuteDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsGenerateCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsGenerateCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsGenerateDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsGenerateDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsMigrateDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsStatusCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsStatusCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsStatusDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsStatusDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsVersionCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsVersionCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsVersionDoctrineCommand" class="AntiMattr\Bundle\MongoDBMigrationsBundle\Command\MigrationsVersionDoctrineCommand">
+            <tag name="console.command"/>
+        </service>
+
+    </services>
+</container>

@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "~2.1|^3.0|^4",
-        "doesntmattr/mongodb-migrations": "^1.1|dev-master",
+        "doesntmattr/mongodb-migrations": "^1.1",
         "doctrine/mongodb-odm": "1.*"
     },
     "require-dev": {

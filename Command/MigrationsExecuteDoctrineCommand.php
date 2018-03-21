@@ -11,33 +11,24 @@
 
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
-use AntiMattr\MongoDB\Migrations\Tools\Console\Command\ExecuteCommand;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-
 /**
  * @author Matthew Fitzgerald <matthewfitz@gmail.com>
+ *
+ * @deprecated will be removed in version 2.0
  */
-class MigrationsExecuteDoctrineCommand extends ExecuteCommand
+class MigrationsExecuteDoctrineCommand extends MigrationsExecuteCommand
 {
     protected function configure()
     {
         parent::configure();
 
-        $this
-            ->setName('mongodb:migrations:execute')
-            ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.', 'default_document_manager')
-        ;
-    }
+        $replacement = str_replace('Doctrine', '', __CLASS__);
+        $notice = sprintf(
+            '%s is deprecated and will be removed in 2.0. Use %s instead',
+            __CLASS__,
+            $replacement
+        );
 
-    public function execute(InputInterface $input, OutputInterface $output)
-    {
-        CommandHelper::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
-
-        $configuration = $this->getMigrationConfiguration($input, $output);
-        CommandHelper::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
-
-        parent::execute($input, $output);
+        @trigger_error($notice, E_USER_DEPRECATED);
     }
 }

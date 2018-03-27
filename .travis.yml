@@ -11,6 +11,8 @@ matrix:
       env: MONGO_VERSION=stable
     - php: 7.1
       env: ADAPTER_VERSION="^1.0.0" MONGODB_VERSION=stable
+    - php: 7.2
+      env: ADAPTER_VERSION="^1.0.0" MONGODB_VERSION=stable
 
 services: mongodb
 

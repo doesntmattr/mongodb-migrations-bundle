@@ -24,6 +24,8 @@ matrix:
 before_script:
     # Not using code coverage
   - phpenv config-rm xdebug.ini
+  # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
+  - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
   - if ! [ -z "$MONGO_VERSION" ]; then yes '' | pecl -q install -f mongo-${MONGO_VERSION}; fi
   - if ! [ -z "$MONGODB_VERSION" ]; then pecl install -f mongodb-${MONGODB_VERSION}; fi
   - if ! [ -z "$ADAPTER_VERSION" ]; then composer require "alcaeus/mongo-php-adapter=${ADAPTER_VERSION}" --ignore-platform-reqs; fi

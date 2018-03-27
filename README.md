@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle.svg?branch=master)](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle)
+[![Latest Stable Version](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/v/stable)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
+[![Total Downloads](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/downloads)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
+
 :warning: Forked from [antimattr/mongodb-migrations-bundle](https://github.com/antimattr/mongodb-migrations-bundle) for contributors as the original project isn't being maintained. See [issue 16](https://github.com/antimattr/mongodb-migrations/issues/16)
 
 The original authors did an awesome job of making a library that has been really

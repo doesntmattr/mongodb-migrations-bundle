@@ -24,9 +24,9 @@ matrix:
 before_script:
     # Not using code coverage
   - phpenv config-rm xdebug.ini
-  - if [ "x${MONGO_VERSION}" != "x" ]; then yes '' | pecl -q install -f mongo-${MONGO_VERSION}; fi
-  - if [ "x${MONGODB_VERSION}" != "x" ]; then pecl install -f mongodb-${MONGODB_VERSION}; fi
-  - if [ "x${ADAPTER_VERSION}" != "x" ]; then composer require "alcaeus/mongo-php-adapter=${ADAPTER_VERSION}" --ignore-platform-reqs; fi
+  - if ! [ -z "$MONGO_VERSION" ]; then yes '' | pecl -q install -f mongo-${MONGO_VERSION}; fi
+  - if ! [ -z "$MONGODB_VERSION" ]; then pecl install -f mongodb-${MONGODB_VERSION}; fi
+  - if ! [ -z "$ADAPTER_VERSION" ]; then composer require "alcaeus/mongo-php-adapter=${ADAPTER_VERSION}" --ignore-platform-reqs; fi
   - composer self-update
   - composer update -v ${COMPOSER_FLAGS}
 

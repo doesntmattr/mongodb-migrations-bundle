@@ -11,6 +11,8 @@
 
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -32,8 +34,11 @@ class MongoDBMigrationsExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            $container->setParameter($this->getAlias().'.'.$key, $value);
+            $container->setParameter($this->getAlias() . '.' . $key, $value);
         }
+
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.xml');
     }
 
     /**

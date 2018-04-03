@@ -41,10 +41,10 @@ Finally, be sure to enable the bundle in AppKernel.php by including the followin
 // app/AppKernel.php
 public function registerBundles()
 {
-    $bundles = array(
+    $bundles = [
         //...
         new AntiMattr\Bundle\MongoDBMigrationsBundle\MongoDBMigrationsBundle(),
-    );
+    ];
 }
 ```
 

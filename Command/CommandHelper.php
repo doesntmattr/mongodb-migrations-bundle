@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 final class CommandHelper
 {
     /**
-     * configureMigrations
+     * configureMigrations.
      *
      * @param ContainerInterface $container
      * @param Configuration      $configuration
@@ -63,12 +63,12 @@ final class CommandHelper
     }
 
     /**
-     * injectContainerToMigrations
+     * injectContainerToMigrations.
      *
      * Injects the container to migrations aware of it.
      *
      * @param ContainerInterface $container
-     * @param array $versions
+     * @param array              $versions
      */
     private static function injectContainerToMigrations(ContainerInterface $container, array $versions)
     {

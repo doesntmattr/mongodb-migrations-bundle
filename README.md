@@ -1,41 +1,34 @@
-:warning: Forked from [antimattr/mongodb-migrations-bundle](https://github.com/antimattr/mongodb-migrations-bundle) for contributors as the original project isn't being maintained. See [issue 16](https://github.com/antimattr/mongodb-migrations/issues/16)
-
-The original authors did an awesome job of making a library that has been really
-really useful AND stable.  Thank you @rcatlin and @matthewfitz !
-
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle.svg?branch=master)](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doesntmattr/mongodb-migrations-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doesntmattr/mongodb-migrations-bundle/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/v/stable)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
 [![Total Downloads](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/downloads)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
 
-MongoDBMigrationsBundle
-========================
+# MongoDB Migrations Bundle
 
-This bundle integrates the [AntiMattr MongoDB Migrations library](https://github.com/doesntmattr/mongodb-migrations) into Symfony so that you can safely and quickly manage MongoDB migrations.
+This bundle integrates the [MongoDB Migrations](https://github.com/doesntmattr/mongodb-migrations) library into Symfony to get you set up more quickly.
 
-Installation
-============
+It was moved to the doesntmattr organisation from [antimattr/mongodb-migrations-bundle](https://github.com/antimattr/mongodb-migrations-bundle) to continue maintenance (See [issue 16](https://github.com/antimattr/mongodb-migrations/issues/16)).
 
-Add the following to your composer.json file:
+The original authors are @rcatlin and @matthewfitz
 
-```json
-{
-    "require": {
-        "doesntmattr/mongodb-migrations-bundle": "^1.0"
-    }
-}
-```
+## PHP Version Support
 
-Install the libraries by running:
+If you require php 5.6 support use version `^1.0`. Version `^2.0` requires at least php 7.1. The `1.x` releases will only receive bug fixes.
+
+## Installation
+
+Install with composer:
 
 ```bash
-composer install
+# For php 5.6
+composer require "doesntmattr/mongodb-migrations-bundle=^1.0"
+
+# For php 7.1
+composer require "doesntmattr/mongodb-migrations-bundle=^2.0"
 ```
 
-If everything worked, the MonogDBMigrationsBundle can now be found at vendor/doesntmattr/mongodb-migrations-bundle.
-
-Finally, be sure to enable the bundle in AppKernel.php by including the following:
+then enable the bundle in `AppKernel.php` by including the following:
 
 ```php
 // app/AppKernel.php
@@ -48,10 +41,9 @@ public function registerBundles()
 }
 ```
 
-Configuration
-=============
+## Configuration
 
-Add following configuration lines to config.yml file.
+Add following configuration lines to `config.yml` file.
 
 ```yaml
 # app/config/config.yml
@@ -61,15 +53,14 @@ mongo_db_migrations:
     dir_name: "%kernel.root_dir%/../src/OpenSky/Bundle/MainBundle/Migrations/MongoDB"
     script_dir_name: "%kernel.root_dir%/scripts"
     name: "OpenSky DEVO MongoDB Migrations"
-    namespace: "OpenSky\Bundle\MainBundle\Migrations\MongoDB"
+    namespace: "OpenSky\\Bundle\\MainBundle\\MigrationsMongoDB"
 ```
 
-Container Aware Migrations
-==========================
+## Container Aware Migrations
 
-In some cases you might need access to the container to ensure the proper update of your data structure. This could be necessary to update relations with some specific logic or to create new entities.
+In some cases you might want to access some services you have defined in the container. For example you may want to use a Factory to create new entities in the structure you need.
 
-Therefore you can just implement the ContainerAwareInterface with its needed methods to get full access to the container.
+To get access to the container simply implement the ContainerAwareInterface including the required method `setContainer()`:
 
 ```php
 // ...
@@ -98,34 +89,15 @@ class Version20130326212938 extends AbstractMigration implements ContainerAwareI
 }
 ```
 
-MongoDB Cursor Timeouts
-=======================
+## MongoDB Cursor Timeouts
 
-In some cases you may need the Cursor timeout to be extended. You can of course do this on a per migration basis, or you can do this for all migrations by extending the base migration and adding to the constructor.
 
-```php
-// ...
-use AntiMattr\MongoDB\Migrations\AbstractMigration as BaseMigration;
-use AntiMattr\MongoDB\Migrations\Version;
-use MongoCursor;
+In some cases you may need the Cursor timeout to be extended. If so, add the MongoDB option `['socketTimeoutMs' => -1]` to your update method. 
 
-abstract class AbstractMigration extends BaseMigration
-{
-    /**
-     * @var AntiMattr\MongoDB\Migrations\Version
-     */
-    public function __construct(Version $version)
-    {
-        parent::__construct($version);
-        MongoCursor::$timeout = -1;
-    }
-}
-```
 
-Features
-========
+## Features
 
-For a full list of available features, see the README.md in the underlying library
+For a full list of available features, see the README.md in the MongoDB Migrations library:
 
 https://github.com/doesntmattr/mongodb-migrations/blob/master/README.md
 
@@ -133,16 +105,15 @@ Differences from the underlying library are limited to the Console commands, nam
 
 Examples of the Command Line args with the difference below:
 
-Features - Generate a New Migration
------------------------------------
+### Generate a New Migration
+
 
 ```bash
 > ./console mongodb:migrations:generate
 Generated new migration class to "Example/Migrations/TestAntiMattr/MongoDB/Version20140822185742.php"
 ```
 
-Features - Status of Migrations
--------------------------------
+### Status of Migrations
 
 ```bash
 > ./console mongodb:migrations:status
@@ -164,8 +135,7 @@ Features - Status of Migrations
     >> New Migrations:                      3
 ```
 
-Features - Migrate all Migrations
----------------------------------
+### Migrate all Migrations
 
 This is what you will execute during your deployment process.
 
@@ -213,8 +183,7 @@ Migrating up to 20140822185744 from 0
   ++ 3 migrations executed
 ```
 
-Features - Execute a Single Migration
--------------------------------------
+### Execute a Single Migration
 
 ```bash
 ./console mongodb:migrations:execute 20140822185742
@@ -240,8 +209,10 @@ WARNING! You are about to execute a database migration that could result in data
   ++ migrated (0.02s)
 ```
 
-Features - Version Up or Down
------------------------------
+Use `--replay` if you need to re-run an executed migration.
+
+
+### Version Up or Down
 
 Is your migration history out of sync for some reason? You can manually add or remove a record from the history without running the underlying migration.
 

@@ -1,17 +1,18 @@
-[![Build Status](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle.svg?branch=master)](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle)
-[![Latest Stable Version](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/v/stable)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
-[![Total Downloads](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/downloads)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
-
 :warning: Forked from [antimattr/mongodb-migrations-bundle](https://github.com/antimattr/mongodb-migrations-bundle) for contributors as the original project isn't being maintained. See [issue 16](https://github.com/antimattr/mongodb-migrations/issues/16)
 
 The original authors did an awesome job of making a library that has been really
 really useful AND stable.  Thank you @rcatlin and @matthewfitz !
 
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle.svg?branch=master)](https://travis-ci.org/doesntmattr/mongodb-migrations-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doesntmattr/mongodb-migrations-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doesntmattr/mongodb-migrations-bundle/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/v/stable)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
+[![Total Downloads](https://poser.pugx.org/doesntmattr/mongodb-migrations-bundle/downloads)](https://packagist.org/packages/doesntmattr/mongodb-migrations-bundle)
+
 MongoDBMigrationsBundle
 ========================
 
-This bundle integrates the [AntiMattr MongoDB Migrations library](https://github.com/doesntmattr/mongodb-migrations).
-into Symfony so that you can safely and quickly manage MongoDB migrations.
+This bundle integrates the [AntiMattr MongoDB Migrations library](https://github.com/doesntmattr/mongodb-migrations) into Symfony so that you can safely and quickly manage MongoDB migrations.
 
 Installation
 ============
@@ -21,8 +22,7 @@ Add the following to your composer.json file:
 ```json
 {
     "require": {
-        "doesntmattr/mongodb-migrations": "~1.0@stable",
-        "doesntmattr/mongodb-migrations-bundle": "~1.0@stable"
+        "doesntmattr/mongodb-migrations-bundle": "^1.0"
     }
 }
 ```

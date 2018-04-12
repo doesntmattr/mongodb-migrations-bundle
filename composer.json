@@ -17,7 +17,7 @@
         "symfony/http-kernel": "^2.7 || ^3.3 || ^4.0",
         "symfony/console": "^2.7 || ^3.3 || ^4.0",
         "symfony/config": "^2.7 || ^3.3 || ^4.0",
-        "doesntmattr/mongodb-migrations": "^1.1",
+        "doesntmattr/mongodb-migrations": "^2.0",
         "doctrine/mongodb-odm": "^1.0"
     },
     "require-dev": {

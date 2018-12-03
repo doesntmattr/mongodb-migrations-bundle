@@ -26,9 +26,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('mongo_db_migrations', 'array');
-
+        $treeBuilder = new TreeBuilder('mongo_db_migrations', 'array');
+        $rootNode    = method_exists(TreeBuilder::class, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('mongo_db_migrations', 'array');
+        
         $rootNode
             ->children()
                 ->scalarNode('collection_name')->defaultValue('migration_versions')->cannotBeEmpty()->end()

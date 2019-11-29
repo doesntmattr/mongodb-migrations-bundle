@@ -12,6 +12,7 @@
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
 use AntiMattr\MongoDB\Migrations\Tools\Console\Command\StatusCommand;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -33,11 +34,13 @@ class MigrationsStatusCommand extends StatusCommand
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        CommandHelper::setApplicationDocumentManager($this->getApplication(), $input->getOption('dm'));
+        /** @var Application $application */
+        $application = $this->getApplication();
+        CommandHelper::setApplicationDocumentManager($application, $input->getOption('dm'));
 
         $configuration = $this->getMigrationConfiguration($input, $output);
-        CommandHelper::configureMigrations($this->getApplication()->getKernel()->getContainer(), $configuration);
+        CommandHelper::configureMigrations($application->getKernel()->getContainer(), $configuration);
 
-        parent::execute($input, $output);
+        return parent::execute($input, $output);
     }
 }

@@ -12,27 +12,26 @@
 namespace AntiMattr\Bundle\MongoDBMigrationsBundle\Command;
 
 use AntiMattr\MongoDB\Migrations\Configuration\Configuration;
+use AntiMattr\MongoDB\Migrations\Version;
+use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Tools\Console\Helper\DocumentManagerHelper;
+use ErrorException;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @author Matthew Fitzgerald <matthewfitz@gmail.com>
  */
 final class CommandHelper
 {
-    /**
-     * configureMigrations.
-     *
-     * @param ContainerInterface $container
-     * @param Configuration      $configuration
-     */
-    public static function configureMigrations(ContainerInterface $container, Configuration $configuration)
+    public static function configureMigrations(ContainerInterface $container, Configuration $configuration): void
     {
         $dir = $container->getParameter('mongo_db_migrations.dir_name');
-        if (!file_exists($dir)) {
-            mkdir($dir, 0777, true);
+        if (!is_dir($dir) && !@mkdir($dir, 0777, true) && !is_dir($dir)) {
+            $error = error_get_last();
+            throw new ErrorException(sprintf('Failed to create directory "%s" with message "%s"', $dir, $error['message']));
         }
 
         $configuration->setMigrationsCollectionName($container->getParameter('mongo_db_migrations.collection_name'));
@@ -47,30 +46,26 @@ final class CommandHelper
     }
 
     /**
-     * @param Application $application
-     * @param string      $dmName
+     * @param string $dmName
      */
-    public static function setApplicationDocumentManager(Application $application, $dmName)
+    public static function setApplicationDocumentManager(Application $application, $dmName): void
     {
-        /* @var $dm \Doctrine\ODM\DocumentManager */
-        $alias = sprintf(
-            'doctrine_mongodb.odm.%s',
-            $dmName
-        );
-        $dm = $application->getKernel()->getContainer()->get($alias);
+        /** @var ManagerRegistry $managerRegistry */
+        $managerRegistry = $application->getKernel()->getContainer()->get('doctrine_mongodb');
+
+        /** @var DocumentManager $dm */
+        $dm = $managerRegistry->getManager($dmName);
+
         $helperSet = $application->getHelperSet();
         $helperSet->set(new DocumentManagerHelper($dm), 'dm');
     }
 
     /**
-     * injectContainerToMigrations.
+     * @param Version[] $versions
      *
-     * Injects the container to migrations aware of it.
-     *
-     * @param ContainerInterface $container
-     * @param array              $versions
+     * Injects the container to migrations aware of it
      */
-    private static function injectContainerToMigrations(ContainerInterface $container, array $versions)
+    private static function injectContainerToMigrations(ContainerInterface $container, array $versions): void
     {
         foreach ($versions as $version) {
             $migration = $version->getMigration();

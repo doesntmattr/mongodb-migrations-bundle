@@ -12,11 +12,7 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">DependencyInjection</directory>
             <directory suffix=".php">Command</directory>
-            <file suffix=".php">MongoDBMigrationsBundle.php</file>
+            <file>MongoDBMigrationsBundle.php</file>
         </whitelist>
-        <blacklist>
-            <directory>vendor</directory>
-            <directory>Tests</directory>
-        </blacklist>
     </filter>
 </phpunit>

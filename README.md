@@ -14,7 +14,7 @@ The original authors are @rcatlin and @matthewfitz
 
 ## PHP Version Support
 
-If you require php 5.6 support use version `^1.0`. Version `^2.0` requires at least php 7.1. The `1.x` releases will only receive bug fixes.
+If you require php 5.6 support use version `^1.0`. Version `^3.0` requires at least php 7.1. The `1.x` releases will only receive bug fixes.
 
 ## Installation
 
@@ -25,7 +25,7 @@ Install with composer:
 composer require "doesntmattr/mongodb-migrations-bundle=^1.0"
 
 # For php 7.1
-composer require "doesntmattr/mongodb-migrations-bundle=^2.0"
+composer require "doesntmattr/mongodb-migrations-bundle=^3.0"
 ```
 
 then enable the bundle in `AppKernel.php` by including the following:

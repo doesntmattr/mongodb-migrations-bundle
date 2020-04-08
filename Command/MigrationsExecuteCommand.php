@@ -28,7 +28,7 @@ class MigrationsExecuteCommand extends ExecuteCommand
 
         $this
             ->setName('mongodb:migrations:execute')
-            ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.', 'default_document_manager')
+            ->addOption('dm', null, InputOption::VALUE_OPTIONAL, 'The document manager to use for this command.')
         ;
     }
 

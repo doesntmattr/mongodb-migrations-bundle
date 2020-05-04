@@ -28,12 +28,12 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('mongo_db_migrations', 'array');
         $rootNode    = method_exists(TreeBuilder::class, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('mongo_db_migrations', 'array');
-        
+
         $rootNode
             ->children()
                 ->scalarNode('collection_name')->defaultValue('migration_versions')->cannotBeEmpty()->end()
                 ->scalarNode('database_name')->cannotBeEmpty()->end()
-                ->scalarNode('dir_name')->defaultValue('%kernel.root_dir%/MongoDBMigrations')->cannotBeEmpty()->end()
+                ->scalarNode('dir_name')->defaultValue('%kernel.project_dir%/src/MongoDBMigrations')->cannotBeEmpty()->end()
                 ->scalarNode('name')->defaultValue('Application MongoDB Migrations')->end()
                 ->scalarNode('namespace')->defaultValue('Application\MongoDBMigrations')->cannotBeEmpty()->end()
                 ->scalarNode('script_dir_name')->end()

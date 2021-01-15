@@ -43,7 +43,7 @@ public function registerBundles()
 
 ## Configuration
 
-Add following configuration lines to `config.yml` file.
+Add following configuration lines to `config.yml` file (`/config/config.yaml` in symfony 5).
 
 ```yaml
 # app/config/config.yml
